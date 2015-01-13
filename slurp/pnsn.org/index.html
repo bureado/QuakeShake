@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>QuickShake | Pacific Northwest Seismic Network </title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta content='' name='description'>
+<meta content='' name='keywords'>
+<link href='http://pnsn.org/assets/favicon.png' rel='shortcut icon' type='image/png'>
+<meta content='initial-scale=1.0, user-scalable=yes' name='viewport'>
+<meta content='QuickShake | Pacific Northwest Seismic Network ' property='og:title'>
+<meta content='website' property='og:type'>
+<meta content='https://pnsn.org//seahawks/quickshake' property='og:url'>
+<meta content='Pacific Northwest Seismic Network' property='og:site_name'>
+<meta content='' property='og:image'>
+<meta content='user-scalable=no, initial-scale=1.0' name='viewport'>
+<meta data-hostname='web4.ess.washington.edu'>
+<link href='/assets/pnsn-logo-clipped.ico' rel='shortcut icon'>
+<link href="/jquery.fancybox/fancybox/jquery.fancybox-1.3.4.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/assets/application-c830dfe881a12911869ccbbcb4e9f261.css" media="all" rel="stylesheet" type="text/css" />
+
+  <meta name="generator" content="BrowserCMS 3.5.4"/>
+
+<style type='text/css'>
+
+</style>
+<!--[if IE6]>
+<script>
+  var ieVersion = "ie6"
+</script>
+<![endif]-->
+<!--[if IE 7]>
+<script>
+  var ieVersion = "ie7"
+</script>
+<![endif]-->
+<!--[if IE 8]>
+<script>
+  var ieVersion = "ie8"
+</script>
+<![endif]-->
+<!--[if IE 9]>
+<script>
+  var ieVersion = "ie9"
+</script>
+<![endif]-->
+<!--[if IE 10]>
+<script>
+  var ieVersion = "ie10"
+</script>
+<![endif]-->
+<!--[if IE]>
+<script>
+  document.getElementsByTagName("html")[0].className += " ie " + ieVersion;
+</script>
+<![endif]-->
+<script src="/assets/application-846efb4cf4a7bb592bd02f3214a8c492.js" type="text/javascript"></script>
+<meta content="authenticity_token" name="csrf-param" />
+<meta content="7MKEYjEj2oAO/MkpBea1NFzuaOuItJtQ1VYHJ+n1PFY=" name="csrf-token" />
+<script src="https://www.google.com/jsapi?key=ABQIAAAA6ko15kufuekvIpeYoY2r6RQC5BWIrj6B6FVut0RoWSKVkHziQRRpi1HTZCLjPDDhVMvUl5D4anM2dw" type="text/javascript"></script>
+<script src='https://maps.google.com/maps/api/js?libraries=drawing&amp;sensor=false'></script>
+
+<script src="https://cdn.socket.io/socket.io-1.0.0.js" type="text/javascript"></script>
+<script src="/assets/hawk_config-1cb3634576d2c743a87b17d27b57a171.js" type="text/javascript"></script>
+<script src="/assets/quake_shake_client-7b0dd5f7fc6649d58845195e082be72a.js" type="text/javascript"></script>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+<!--[if lte IE 6]>
+
+<script>
+  window.onload=function(){e("images/ie6/")}
+</script>
+<![endif]-->
+<div id='page'>
+
+<div id='header'>
+<div id='logo'>
+<a href="/" alt="Pacific Northwest Seismic Network" title="Pacific Northwest Seismic Network"><img alt="Pnsnlogohi" src="/assets/pnsnLogoHi-1dc32996b04dbe24c29536efd4022f06.png" /></a>
+</div>
+<div id='search'>
+<form accept-charset="UTF-8" action="/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+<input id="query" name="query" type="text" value="Search" />
+<div id='search-submit'>
+<input type="submit" value="GO" />
+</div>
+</form>
+
+<a href="https://twitter.com/#!/pnsn1" class="social-button" target="_blank"><img alt="Twt" src="/assets/twt-760cfa367e8786a80a462069f460d5da.png" /></a>
+<a href="https://plus.google.com/u/0/+PnsnOrgseisinfo/posts" class="social-button" target="_blank"><img alt="G+" src="/assets/g+-ea6a8ef34e4af6f75c95d1f0bdc03dd8.png" /></a>
+<a href="https://www.facebook.com/thePNSN/" class="social-button" target="_blank"><img alt="Fb" src="/assets/fb-c55eefa8029e65f4300828e9b9dea53d.png" /></a>
+<a href="http://instagram.com/pnsn1" class="social-button" target="_blank"><img alt="Insta" src="/assets/insta-8084127d8366ae6677512652eecb4250.png" /></a>
+<a href="/feeds" class="social-button"><img alt="Rss" src="/assets/rss-901eb8e083d7bcca5558491649faee78.png" /></a>
+<p class='contact-top'><a href="/contact-us">Contact PNSN</a></p>
+</div>
+
+</div>
+
+<div class='interior'>
+<div id='hawkBanner'></div>
+<div id='quakeLogo'>
+<a href="/" alt="Pacific Northwest Seismic Network" title="Pacific Northwest Seismic Network"><img alt="Pnsnlogohi" src="/assets/pnsnLogoHi-1dc32996b04dbe24c29536efd4022f06.png" /></a>
+<ul class="breadcrumbs">
+  <li class="first"><a href="/">PNSN &gt; </a></li>
+  <li><a href="/seahawks">Seattle Seahawks &gt; </a></li>
+  <li>QuickShake</li>
+</ul>
+</div>
+<div id='azure'>
+Powered by
+<a href="http://www.azure.com" alt="Microsoft Azure" id="ms-azure" target="_blank"><img alt="Ms_azure_logo" src="/assets/ms_azure_logo-4a676523a0fd0587c4ea2a753d883266.png" /></a>
+</div>
+<h1 id='quickShake'>QuickShake</h1>
+<div class='cms' id='quickShakeCMS'>
+
+    <p>
+	A live feed from CenturyLink Field. Please see <a href="/seahawks/station-map">sensor map</a> for locations. <a href="/seahawks/interpret-displays" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">Click here for help</a> to interpret the displays.</p>
+
+
+</div>
+<div id='quick-oops'>
+Something has gone wrong, please refresh and try again.
+</div>
+<div id='quick-body'>
+<div id='timeout'>
+<p>Are you still there?</p>
+<div id='timer'></div>
+<p>Click anywhere to resume playing.</p>
+</div>
+<canvas id='quakeShake'></canvas>
+<div id='quake-controls'>
+<div class='controls' id='playback'>
+<label>Playback</label>
+<div id='playback-slider'></div>
+</div>
+<div id='sliderVa'></div>
+<div class='slidertime' id='sliderLeft'></div>
+<div class='slidertime' id='sliderMid'></div>
+<div class='slidertime' id='sliderRight'></div>
+<div class='controls' id='quake-buttons'>
+<a href="#" alt="Play" class="disabled" id="button-play" title="Play"><img alt="Play" src="/assets/play-16d6b047c25a215a072dec7a5d55373f.png" /></a>
+<a href="#" alt="Pause" id="button-stop" title="Pause"><img alt="Stop" src="/assets/stop-5bb22d8fa8b166c6e5b011a4a4472ac3.png" /></a>
+<a href="#" alt="Realtime" class="disabled" id="button-realtime" title="Realtime"><img alt="Realtime" src="/assets/realtime-940c6fdd73b9c1dd1c76e92f4a16da79.png" /></a>
+</div>
+<div class='controls' id='zoom'>
+<label>Scale (%g) - Top Left</label>
+<div id='zoom-slider'></div>
+<!-- #percent-g -->
+</div>
+<div id='mobile-controls'>
+<a href="#" id="mobile-playback">Playback</a>
+<a href="#" id="mobile-scale">Scale</a>
+</div>
+</div>
+<div id='quickShakeScale'>
+<div id='top'></div>
+<div id='bottom'>0</div>
+</div>
+</div>
+
+<div class='accent-block' id='footer'>
+<ul>
+	<li>
+		<a href="http://www.ess.washington.edu" target="_blank">ESS</a></li>
+	<li>
+		<a href="http://www.washington.edu" target="_blank">UW</a></li>
+	<li>
+		<a href="http://earthquakes.usgs.gov" target="_blank">USGS</a></li>
+	<li>
+		<a href="http://earthquake.usgs.gov/monitoring/anss/index.php" target="_blank">ANSS</a></li>
+	<li>
+		<a href="/blog">Blog</a></li>
+	<li>
+		<a href="http://earthquake.usgs.gov/earthquakes/dyfi/">Did you feel it?</a></li>
+	<li>
+		<a href="/about/donate">Donate</a></li>
+</ul>
+<p>
+	&nbsp;</p>
+
+</div>
+</div>
+</div>
+</body>
+</html>
+
