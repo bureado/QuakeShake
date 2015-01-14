@@ -1,59 +1,67 @@
 var http    = require('http');
 var redis   = require('redis');
 var express = require('express');
+var azure   = require('azure');
 
-// Local configuration
-var subScnls={};
-subScnls.key = "hawks3Z";
-subScnls.redisHost = "products01.ess.washington.edu";
-subScnls.redisPort = 32109;
-subScnls.port = 8080;
+var WebSocketServer = require('ws').Server;
+
+var config = require("./config.js");
 
 // Initialize servers and application
 var app = express();
-app.use(express.static(__dirname + '/slurp/pnsn.org')); // Change to /public in production
+app.use(express.static(__dirname + '/slurp/mobile')); // Change to /public in production
 // app.use(express.static(__dirname + '/public')); // Change to /public in production
+
 var server = http.createServer(app);
-server.listen(process.env.PORT || subScnls.port); // Azure Web Sites sets env.PORT, otherwise use config
-var io = require('socket.io')(server); // This attaches the websockets to the previously created server
+server.listen(process.env.PORT || config.port); // Azure Web Sites sets env.PORT, otherwise use config
+
+wss = new WebSocketServer({ server: server });
+
+// Defines broadcast function
+wss.broadcast = function broadcast(data) {
+  wss.clients.forEach(function each(client) {
+    client.send(data);
+  });
+};
 
 // Initializes redis connection
-var sub = redis.createClient(subScnls.redisPort, subScnls.redisHost);
-sub.subscribe(subScnls.key);
+var sub = redis.createClient(config.redisPort, config.redisHost);
+sub.subscribe(config.key);
 sub.setMaxListeners(0);
+
+// Initializes Azure
+var serviceBusService = azure.createServiceBusService(config.AzureEndpoint);
 
 // Global utility variables
 var connectCounter = 0;
-var allSocks = {};
-
-// socket.broadcast.emit
 
 // New websocket client
-io.on('connection', function(client){
-	client.qsid = connectCounter;
-	allSocks[connectCounter] = client; // store socket in array object
-
-	connectCounter++;
+wss.on('connection', function(client){
 	console.log("[" + process.pid + "] ws client connected. total: " + connectCounter);
-
+	connectCounter++;
 	client.on('disconnect', function() {
-		delete allSocks[client.qsid];
         	connectCounter--;
-//	        console.log("ws client disconnected.");
 	});
 });
 
 // New redis message
 sub.on('message', function(channel, msg) {
-//	console.log("[" + process.pid + "] msg.length: " + msg.length );
-//	allSocks[0].broadcast.send(msg);
-	for(var key in allSocks) {
-		if (allSocks[key].connected) {
-	  		allSocks[key].send(msg);
-		}
-//		console.log("[" + process.pid + "] sent msg to socket " + allSocks[key].qsid);
-	}
+	//io.sockets.send(msg);
+	wss.broadcast(msg);
 });
+
+// Check ASB
+function checkAzure() {
+	return serviceBusService.receiveSubscriptionMessage(config.AzureTopic, config.AzureSub, function(error, azmsg){
+		if (error && error != "No messages to receive") {
+			console.log(error);
+		} else if (azmsg) {
+			wss.broadcast(azmsg.body);
+		}
+	});
+}
+
+setInterval(checkAzure, 5000);
 
 // A stub for handling other redis events in the future
 sub.on('connect'     , log('connect'));
